@@ -4,27 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  private API_CLIENT: string;
-  private API_SECRET: string;
+  public API_CLIENT: string;
+  public API_SECRET: string;
 
   constructor() {
     this.getAPICredentials();
   }
 
-  public APIKeyStatus() {
+  public APICredentialsStatus() {
     if (this.API_CLIENT && this.API_SECRET)
       return true;
     return false;
   }
 
   public setAPICredentials(CLIENTID: string, CLIENTSECRET: string) {
-    if (CLIENTID && CLIENTSECRET) {
-      localStorage.setItem('API_CLIENT', CLIENTID);
-      localStorage.setItem('API_SECRET', CLIENTSECRET);
-      this.getAPICredentials();
-      return true;
-    }
-    return false;
+    localStorage.setItem('API_CLIENT', CLIENTID);
+    localStorage.setItem('API_SECRET', CLIENTSECRET);
+    this.getAPICredentials();
+    return true;
   }
 
   private getAPICredentials() {

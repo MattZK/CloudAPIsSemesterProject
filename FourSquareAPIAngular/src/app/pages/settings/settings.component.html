@@ -1,3 +1,41 @@
-<p>
-  settings works!
-</p>
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="settings icon"></i>
+      <div class="content">
+        Settings
+      </div>
+    </h2>
+  </div>
+
+  <div *ngIf="!APICredentialsStatus" class="ui row">
+    <div class="ui eight wide column negative message">
+      <div class="header">
+        Foursquare API Requires Authentication
+      </div>
+      <p>
+        Please add Foursquare API Credentials down below for this app to work.</p>
+    </div>
+  </div>
+
+  <div class="ui row">
+    <form class="ui eight wide column form">
+      <div class="field">
+        <label>Foursquare Client ID</label>
+        <input type="text" name="client-id" placeholder="Client ID" #fsqclientid>
+      </div>
+      <div class="field">
+        <label>Foursquare Client Secret</label>
+        <input type="text" name="client-secret" placeholder="Client Secret" #fsqclientsecret>
+      </div>
+      <div class="field">
+        <div class="ui disabled checkbox">
+          <input type="checkbox" checked tabindex="0" class="hidden">
+          <label>Remember Foursquare API Credentials</label>
+        </div>
+      </div>
+      <button class="ui button" type="button" (click)="save()">Save</button>
+    </form>
+  </div>
+</div>
