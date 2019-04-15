@@ -1,6 +1,9 @@
+<app-header></app-header>
 <form *ngIf="!APIKeyState">
   <input type="text" placeholder="CLIENT ID" #ClientID/>
   <input type="text" placeholder="CLIENT SECRET" #ClientSecret/>
   <input type="button" (click)="setAPICredentials()" value="SET"/>
 </form>
-<router-outlet></router-outlet>
+<div class="ui container">
+  <router-outlet></router-outlet>
+</div>
