@@ -9,8 +9,6 @@ export class DataService {
 
   constructor() {
     this.getAPICredentials();
-    console.log(this.API_CLIENT);
-    console.log(this.API_SECRET);
   }
 
   public APIKeyStatus() {

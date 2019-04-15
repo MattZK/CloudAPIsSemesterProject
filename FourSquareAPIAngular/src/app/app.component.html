@@ -1,5 +1,4 @@
-<p>Key State: {{ APIKeyState }}</p>
-<form action="">
+<form *ngIf="!APIKeyState">
   <input type="text" placeholder="CLIENT ID" #ClientID/>
   <input type="text" placeholder="CLIENT SECRET" #ClientSecret/>
   <input type="button" (click)="setAPICredentials()" value="SET"/>
