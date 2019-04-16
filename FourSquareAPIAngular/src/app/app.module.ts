@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { SearchComponent } from './pages/queries/search/search.component';
+import { ExploreComponent } from './pages/queries/explore/explore.component';
+import { TrendingComponent } from './pages/queries/trending/trending.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    SearchComponent,
+    ExploreComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,
