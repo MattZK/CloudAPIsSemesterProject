@@ -1,3 +1,22 @@
-<p>
-  search works!
-</p>
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="search icon"></i>
+      <div class="content">
+        Search Venues
+      </div>
+    </h2>
+  </div>
+
+  <div class="ui row">
+    <form class="ui eight wide column form">
+      <div class="field">
+        <label>Find a venue (near Antwerp)</label>
+        <input type="text" name="client-id" placeholder="Venue Query" #query>
+      </div>
+      <button class="ui button" type="button" (click)="search()">Search</button>
+    </form>
+  </div>
+  
+</div>
