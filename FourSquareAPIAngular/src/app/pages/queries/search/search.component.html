@@ -9,7 +9,7 @@
     </h2>
   </div>
 
-  <div class="ui row">
+  <div class="ui row" style="margin-bottom: 4em;">
     <form class="ui eight wide column form" (ngSubmit)="searchVenueByUserInput()">
       <div class="field">
         <label>Find a venue (near Antwerp)</label>
@@ -19,4 +19,5 @@
     </form>
   </div>
   
+  <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
 </div>

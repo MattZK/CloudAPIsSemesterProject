@@ -10,7 +10,7 @@ export class SearchComponent implements OnInit {
   @ViewChild('query') searchQuery;
 
   private lastQuery: String;
-  private lastList: FourSquareSearchResponse.Venue[];
+  private venueList: FourSquareSearchResponse.Venue[];
 
   constructor(private dataService: DataService) { }
 
@@ -20,8 +20,8 @@ export class SearchComponent implements OnInit {
   searchVenueByUserInput(event?: Event) {
     if(!this.searchQuery.nativeElement.value) return;
     this.dataService.getVenuesBySearch(this.searchQuery.nativeElement.value, "Antwerp").subscribe(data => {
-      this.lastList = data.response.venues;
-      console.log(this.lastList);
+      this.venueList = data.response.venues;
+      console.log(this.venueList);
     });
   }
 }
