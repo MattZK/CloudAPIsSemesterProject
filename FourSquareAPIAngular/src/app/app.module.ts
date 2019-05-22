@@ -10,6 +10,8 @@ import { SearchComponent } from './pages/queries/search/search.component';
 import { ExploreComponent } from './pages/queries/explore/explore.component';
 import { TrendingComponent } from './pages/queries/trending/trending.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VenueListComponent } from './results/venue-list/venue-list.component';
+import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     SettingsComponent,
     SearchComponent,
     ExploreComponent,
-    TrendingComponent
+    TrendingComponent,
+    VenueListComponent,
+    VenueDetailComponent
   ],
   imports: [
     BrowserModule,

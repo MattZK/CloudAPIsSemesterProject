@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from 'src/app/data.service';
+import { DataService, FourSquareSearchResponse } from 'src/app/data.service';
 
 @Component({
   selector: 'app-search',
@@ -9,6 +9,9 @@ import { DataService } from 'src/app/data.service';
 export class SearchComponent implements OnInit {
   @ViewChild('query') searchQuery;
 
+  private lastQuery: String;
+  private lastList: FourSquareSearchResponse.Venue[];
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -17,7 +20,8 @@ export class SearchComponent implements OnInit {
   search() {
     if(!this.searchQuery.nativeElement.value) return;
     this.dataService.getVenuesBySearch(this.searchQuery.nativeElement.value, "Antwerp").subscribe(data => {
-      console.log(data);
+      this.lastList = data.response.venues;
+      console.log(this.lastList);
     });
   }
 }
