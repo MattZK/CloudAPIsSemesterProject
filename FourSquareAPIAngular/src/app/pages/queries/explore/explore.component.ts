@@ -14,7 +14,7 @@ export class ExploreComponent implements OnInit {
   ngOnInit() {
   }
 
-  search() {
+  searchVenueByUserInput(event?: Event) {
     if(!this.exploreQuery.nativeElement.value) return;
     this.dataService.getExploreVenuesByLocation(this.exploreQuery.nativeElement.value).subscribe(data => {
       console.log(data);

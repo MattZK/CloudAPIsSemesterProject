@@ -8,6 +8,7 @@ import { DataService } from 'src/app/data.service';
 })
 export class TrendingComponent implements OnInit {
   @ViewChild("locationBtn") locationButton;
+  @ViewChild("query") queryField;
 
   constructor(private dataService: DataService) { }
 
@@ -17,14 +18,21 @@ export class TrendingComponent implements OnInit {
     }
   }
 
-  location() {
+  searchVenueByUserLocation(event?: Event) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.dataService.getExploreVenuesByLocationCord(position.coords.latitude, position.coords.longitude).subscribe(data => {
           console.log(data);
-        })
+        });
       });
     }
+  }
+
+  searchVenueByUserInput(event?: Event) {
+    if (!this.queryField.nativeElement.value) return;
+    this.dataService.getTrendingVenuesByLocation(this.queryField.nativeElement.value).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

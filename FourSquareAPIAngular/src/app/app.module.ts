@@ -12,6 +12,7 @@ import { TrendingComponent } from './pages/queries/trending/trending.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VenueListComponent } from './results/venue-list/venue-list.component';
 import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VenueDetailComponent } from './results/venue-detail/venue-detail.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

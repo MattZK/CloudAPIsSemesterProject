@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -31,26 +31,52 @@ export class DataService {
   }
 
   public getVenuesBySearch (query, location) {
-    console.log(`https://api.foursquare.com/v2/venues/search?near=${ location }&query=${ query }&limit=10&client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
-    return this.http.get<FourSquareSearchResponse.RootObject>(`https://api.foursquare.com/v2/venues/search?near=${ location }&query=${ query }&limit=10&client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
+    const params = new HttpParams()
+    .set('near', location)
+    .set('query', query)
+    .set('limit', '10')
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get<FourSquareSearchResponse.RootObject>(`https://api.foursquare.com/v2/venues/search`, { params: params });
   }
 
   public getVenueById(venueid) {
-    return this.http.get(`https://api.foursquare.com/v2/venues/${ venueid }?client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
+    const params = new HttpParams()
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get(`https://api.foursquare.com/v2/venues/${ venueid }`, { params: params });
   }
 
   public getExploreVenuesByLocation(location) {
-    return this.http.get(`https://api.foursquare.com/v2/venues/explore?near=${ location }&limit=10&client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
+    const params = new HttpParams()
+    .set('near', location)
+    .set('limit', '10')
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get(`https://api.foursquare.com/v2/venues/explore`);
   }
 
   public getExploreVenuesByLocationCord(latitude: number, longitude: number) {
-    const location = `${latitude},${longitude}`;
-    console.log(location);
-    return this.http.get(`https://api.foursquare.com/v2/venues/explore?ll=${ location }&limit=10&client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
+    const params = new HttpParams()
+    .set('ll', `${latitude},${longitude}`)
+    .set('limit', '10')
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get(`https://api.foursquare.com/v2/venues/explore`, { params: params });
   }
 
   public getTrendingVenuesByLocation(location) {
-    return this.http.get(`https://api.foursquare.com/v2/venues/trending?near=${ location }&limit=10&client_id=${ this.API_CLIENT }&client_secret=${ this.API_SECRET }&v=20190522`);
+    const params = new HttpParams()
+    .set('near', location)
+    .set('limit', '10')
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get(`https://api.foursquare.com/v2/venues/trending`, { params: params });
   }
 }
 

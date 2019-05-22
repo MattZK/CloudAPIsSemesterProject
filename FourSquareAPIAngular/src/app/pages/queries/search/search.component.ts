@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  search() {
+  searchVenueByUserInput(event?: Event) {
     if(!this.searchQuery.nativeElement.value) return;
     this.dataService.getVenuesBySearch(this.searchQuery.nativeElement.value, "Antwerp").subscribe(data => {
       this.lastList = data.response.venues;

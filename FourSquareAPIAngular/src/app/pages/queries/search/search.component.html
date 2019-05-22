@@ -10,12 +10,12 @@
   </div>
 
   <div class="ui row">
-    <form class="ui eight wide column form">
+    <form class="ui eight wide column form" (ngSubmit)="searchVenueByUserInput()">
       <div class="field">
         <label>Find a venue (near Antwerp)</label>
-        <input type="text" name="client-id" placeholder="Venue Query" #query>
+        <input type="text" placeholder="Venue Query" #query>
       </div>
-      <button class="ui button" type="button" (click)="search()">Search</button>
+      <button class="ui button" type="submit">Search</button>
     </form>
   </div>
   
