@@ -1,3 +1,23 @@
-<p>
-  search works!
-</p>
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="search icon"></i>
+      <div class="content">
+        Search Venues
+      </div>
+    </h2>
+  </div>
+
+  <div class="ui row" style="margin-bottom: 4em;">
+    <form class="ui eight wide column form" (ngSubmit)="searchVenueByUserInput()">
+      <div class="field">
+        <label>Find a venue (near Antwerp)</label>
+        <input type="text" placeholder="Venue Query" #query>
+      </div>
+      <button class="ui button" type="submit">Search</button>
+    </form>
+  </div>
+  
+  <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
+</div>

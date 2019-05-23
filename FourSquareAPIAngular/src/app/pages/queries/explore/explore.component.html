@@ -1,3 +1,25 @@
-<p>
-  explore works!
-</p>
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="search icon"></i>
+      <div class="content">
+        Explore Venues
+      </div>
+    </h2>
+  </div>
+
+  <div class="ui row">
+    <form class="ui eight wide column form" (ngSubmit)="searchVenueByUserInput()">
+      <div class="field">
+        <label>Find a place near</label>
+        <input type="text" placeholder="Location Query" #query>
+      </div>
+      <button class="ui button" type="submit">Search</button>
+      <button class="ui primary button disabled" type="button" (click)="searchVenueByUserLocation()" #locationBtn>Use Current Location</button>
+    </form>
+  </div>
+
+  <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
+  
+</div>

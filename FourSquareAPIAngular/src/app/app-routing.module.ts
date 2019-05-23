@@ -7,6 +7,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SearchComponent } from './pages/queries/search/search.component';
 import { ExploreComponent } from './pages/queries/explore/explore.component';
 import { TrendingComponent } from './pages/queries/trending/trending.component';
+import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
 
 const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'explore', component: ExploreComponent },
   { path: 'trending', component: TrendingComponent },
+  { path: 'venue/:id', component: VenueDetailComponent },
   { path: '**', redirectTo: '/home' }
 ];
 

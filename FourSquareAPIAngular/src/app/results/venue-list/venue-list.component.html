@@ -1,0 +1,15 @@
+<div class="ui ten wide left aligned column" style="margin-top: 2em;">
+  <h3>Results</h3>
+  <div *ngIf="venues" class="ui relaxed list" style="text-align: left;">
+    <div class="item" *ngFor="let venue of venues">
+      <img class="ui avatar image" [src]="venue.categories[0].icon.prefix + '64' + venue.categories[0].icon.suffix" style="background: gray;">
+      <div class="content">
+        <a class="header">{{ venue.name }}</a>
+        <div class="description">{{venue.categories[0].name }} <b>{{ venue.location.address }}</b></div>
+      </div>
+      <div class="right floated ui button" [routerLink]="[ '/venue', venue.id ]">Details</div>
+    </div>
+  </div>
+
+  <p *ngIf="venues.length === 0">No results</p>
+</div>

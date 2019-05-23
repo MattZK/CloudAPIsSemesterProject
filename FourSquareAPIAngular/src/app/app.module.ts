@@ -9,6 +9,10 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SearchComponent } from './pages/queries/search/search.component';
 import { ExploreComponent } from './pages/queries/explore/explore.component';
 import { TrendingComponent } from './pages/queries/trending/trending.component';
+import { HttpClientModule } from '@angular/common/http';
+import { VenueListComponent } from './results/venue-list/venue-list.component';
+import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { TrendingComponent } from './pages/queries/trending/trending.component';
     SettingsComponent,
     SearchComponent,
     ExploreComponent,
-    TrendingComponent
+    TrendingComponent,
+    VenueListComponent,
+    VenueDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
