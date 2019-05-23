@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/data.service';
+import { DevDataService } from 'src/app/dev-data.service';
 
 @Component({
   selector: 'app-trending',
@@ -10,7 +11,7 @@ export class TrendingComponent implements OnInit {
   @ViewChild("locationBtn") locationButton;
   @ViewChild("query") queryField;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DevDataService) { }
 
   ngOnInit() {
     if (navigator.geolocation) {
@@ -21,7 +22,7 @@ export class TrendingComponent implements OnInit {
   searchVenueByUserLocation(event?: Event) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.dataService.getExploreVenuesByLocationCord(position.coords.latitude, position.coords.longitude).subscribe(data => {
+        this.dataService.getTrendingVenuesByLocationCord(position.coords.latitude, position.coords.longitude).subscribe(data => {
           console.log(data);
         });
       });

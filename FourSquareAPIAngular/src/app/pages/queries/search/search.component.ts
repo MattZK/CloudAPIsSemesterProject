@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService, FourSquareSearchResponse } from 'src/app/data.service';
+import { DevDataService } from 'src/app/dev-data.service';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ export class SearchComponent implements OnInit {
   private lastQuery: String;
   private venueList: FourSquareSearchResponse.Venue[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DevDataService) { }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FourSquareSearchResponse } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DevDataService {
   constructor(private http: HttpClient) { }
 
   public getVenuesBySearch (query, location) {
-    return this.http.get(`https://matthiaswillemsen.me/cloud/venuesearch.json`);
+    return this.http.get<FourSquareSearchResponse.RootObject>(`https://matthiaswillemsen.me/cloud/venuesearch.json`);
   }
 
   public getVenueById(venueid) {
