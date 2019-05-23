@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse } from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class DataService {
     this.API_SECRET = localStorage.getItem('API_SECRET');
   }
 
-  public getVenuesBySearch (query, location) {
+  public getVenuesBySearch (query: string, location: string) {
     const params = new HttpParams()
     .set('near', location)
     .set('query', query)
@@ -41,22 +42,22 @@ export class DataService {
     return this.http.get<FourSquareSearchResponse.RootObject>(`https://api.foursquare.com/v2/venues/search`, { params: params });
   }
 
-  public getVenueById(venueid) {
+  public getVenueById(venueid: string) {
     const params = new HttpParams()
     .set('client_id', this.API_CLIENT)
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
-    return this.http.get(`https://api.foursquare.com/v2/venues/${ venueid }`, { params: params });
+    return this.http.get<FourSquareVenueResponse.RootObject>(`https://api.foursquare.com/v2/venues/${ venueid }`, { params: params });
   }
 
-  public getExploreVenuesByLocation(location) {
+  public getExploreVenuesByLocation(location: string) {
     const params = new HttpParams()
     .set('near', location)
     .set('limit', '10')
     .set('client_id', this.API_CLIENT)
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
-    return this.http.get(`https://api.foursquare.com/v2/venues/explore`, { params: params });
+    return this.http.get<FourSquareExploreResponse.RootObject>(`https://api.foursquare.com/v2/venues/explore`, { params: params });
   }
 
   public getExploreVenuesByLocationCord(latitude: number, longitude: number) {
@@ -66,123 +67,26 @@ export class DataService {
     .set('client_id', this.API_CLIENT)
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
-    return this.http.get(`https://api.foursquare.com/v2/venues/explore`, { params: params });
+    return this.http.get<FourSquareExploreResponse.RootObject>(`https://api.foursquare.com/v2/venues/explore`, { params: params });
   }
 
-  public getTrendingVenuesByLocation(location) {
+  public getTrendingVenuesByLocation(location: string) {
     const params = new HttpParams()
     .set('near', location)
     .set('limit', '10')
     .set('client_id', this.API_CLIENT)
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
-    return this.http.get(`https://api.foursquare.com/v2/venues/trending`, { params: params });
-  }
-}
-
-export declare namespace FourSquareSearchResponse {
-
-  export interface Meta {
-      code: number;
-      requestId: string;
+    return this.http.get<FourSquareTrendingResponse.RootObject>(`https://api.foursquare.com/v2/venues/trending`, { params: params });
   }
 
-  export interface LabeledLatLng {
-      label: string;
-      lat: number;
-      lng: number;
+  public getTrendingVenuesByLocationCord(latitude: number, longitude: number) {
+    const params = new HttpParams()
+    .set('ll', `${latitude},${longitude}`)
+    .set('limit', '10')
+    .set('client_id', this.API_CLIENT)
+    .set('client_secret', this.API_SECRET)
+    .set('v', '20190522');
+    return this.http.get<FourSquareExploreResponse.RootObject>(`https://api.foursquare.com/v2/venues/trending`, { params: params });
   }
-
-  export interface Location {
-      address: string;
-      lat: number;
-      lng: number;
-      labeledLatLngs: LabeledLatLng[];
-      postalCode: string;
-      cc: string;
-      neighborhood: string;
-      city: string;
-      state: string;
-      country: string;
-      formattedAddress: string[];
-  }
-
-  export interface Icon {
-      prefix: string;
-      suffix: string;
-  }
-
-  export interface Category {
-      id: string;
-      name: string;
-      pluralName: string;
-      shortName: string;
-      icon: Icon;
-      primary: boolean;
-  }
-
-  export interface Venue {
-      id: string;
-      name: string;
-      location: Location;
-      categories: Category[];
-      referralId: string;
-      hasPerk: boolean;
-  }
-
-  export interface Center {
-      lat: number;
-      lng: number;
-  }
-
-  export interface Ne {
-      lat: number;
-      lng: number;
-  }
-
-  export interface Sw {
-      lat: number;
-      lng: number;
-  }
-
-  export interface Bounds {
-      ne: Ne;
-      sw: Sw;
-  }
-
-  export interface Geometry {
-      center: Center;
-      bounds: Bounds;
-  }
-
-  export interface Feature {
-      cc: string;
-      name: string;
-      displayName: string;
-      matchedName: string;
-      highlightedName: string;
-      woeType: number;
-      slug: string;
-      id: string;
-      longId: string;
-      geometry: Geometry;
-  }
-
-  export interface Geocode {
-      what: string;
-      where: string;
-      feature: Feature;
-      parents: any[];
-  }
-
-  export interface Response {
-      venues: Venue[];
-      geocode: Geocode;
-  }
-
-  export interface RootObject {
-      meta: Meta;
-      response: Response;
-  }
-
 }
