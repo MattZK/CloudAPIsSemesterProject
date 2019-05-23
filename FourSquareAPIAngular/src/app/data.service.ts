@@ -56,7 +56,7 @@ export class DataService {
     .set('client_id', this.API_CLIENT)
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
-    return this.http.get(`https://api.foursquare.com/v2/venues/explore`);
+    return this.http.get(`https://api.foursquare.com/v2/venues/explore`, { params: params });
   }
 
   public getExploreVenuesByLocationCord(latitude: number, longitude: number) {
