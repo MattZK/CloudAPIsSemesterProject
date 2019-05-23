@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
 
   private venueList: FourSquareSearchResponse.Venue[];
 
-  constructor(private dataService: DevDataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,48 @@
-<div class="ui grid">
+<div class="ui centered grid" *ngIf="venue">
 
   <div class="ui row">
-    
+    <img class="ui medium rounded image" [src]="venue.bestPhoto.prefix + '300' + venue.bestPhoto.suffix">
+  </div>
+
+  <div class="ui row">
+    <h1>{{ venue.name }}</h1>
+    <p><b>{{ venue.categories[0].name }}</b></p>
+    <p>{{ venue.location.address }}, {{ venue.location.city }}, {{ venue.location.country }}</p>
+  </div>
+
+  <div class="ui centered row statistics">
+    <div class="statistic">
+      <div class="value">
+        {{ venue.hereNow.count }}
+      </div>
+      <div class="label">
+        Here Now
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value">
+        {{ venue.stats.tipCount }}
+      </div>
+      <div class="label">
+        Tips
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value" [style.color]="'#' + venue.ratingColor">
+        {{ venue.rating }}
+      </div>
+      <div class="label">
+        Rating
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value">
+        {{ venue.ratingSignals }}
+      </div>
+      <div class="label">
+        Ratings
+      </div>
+    </div>
   </div>
 
 </div>

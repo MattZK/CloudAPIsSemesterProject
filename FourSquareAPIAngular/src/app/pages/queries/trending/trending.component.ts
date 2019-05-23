@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { DevDataService } from 'src/app/dev-data.service';
+import { FourSquareTrendingResponse } from 'src/app/types';
 
 @Component({
   selector: 'app-trending',
@@ -11,7 +12,9 @@ export class TrendingComponent implements OnInit {
   @ViewChild("locationBtn") locationButton;
   @ViewChild("query") queryField;
 
-  constructor(private dataService: DevDataService) { }
+  private venueList: FourSquareTrendingResponse.Venue[];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     if (navigator.geolocation) {
@@ -23,7 +26,7 @@ export class TrendingComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.dataService.getTrendingVenuesByLocationCord(position.coords.latitude, position.coords.longitude).subscribe(data => {
-          console.log(data);
+          this.venueList = data.response.venues;
         });
       });
     }
@@ -32,7 +35,7 @@ export class TrendingComponent implements OnInit {
   searchVenueByUserInput(event?: Event) {
     if (!this.queryField.nativeElement.value) return;
     this.dataService.getTrendingVenuesByLocation(this.queryField.nativeElement.value).subscribe(data => {
-      console.log(data);
+      this.venueList = data.response.venues;
     });
   }
 

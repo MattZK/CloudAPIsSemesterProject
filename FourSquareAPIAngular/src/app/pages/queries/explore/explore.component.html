@@ -16,7 +16,10 @@
         <input type="text" placeholder="Location Query" #query>
       </div>
       <button class="ui button" type="submit">Search</button>
+      <button class="ui primary button disabled" type="button" (click)="searchVenueByUserLocation()" #locationBtn>Use Current Location</button>
     </form>
   </div>
+
+  <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
   
 </div>
