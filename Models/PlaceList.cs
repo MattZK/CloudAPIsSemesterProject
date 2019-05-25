@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace CloudAPIsSemesterProject.Models
 {
-  public class List
+  public class PlaceList
   {
     public int Id { get; set; }
     public string Name { get; set; }

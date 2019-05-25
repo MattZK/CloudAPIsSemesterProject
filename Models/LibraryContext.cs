@@ -11,7 +11,7 @@ namespace CloudAPIsSemesterProject.Models
   {
       public LibraryContext(DbContextOptions<LibraryContext> options): base(options){}
       public DbSet<User> Users { get; set; }
-      public DbSet<List> Lists { get; set; }
+      public DbSet<PlaceList> PlaceList { get; set; }
       public DbSet<Place> Places { get; set; }
   }
 }
