@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CloudAPIsSemesterProject;
 
-namespace CloudAPIsSemesterProject.Model
+namespace CloudAPIsSemesterProject.Models
 {
   public class LibraryContext: DbContext
   {

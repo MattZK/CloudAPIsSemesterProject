@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CloudAPIsSemesterProject.Model
+namespace CloudAPIsSemesterProject.Models
 {
   public class DBInitializer
   {

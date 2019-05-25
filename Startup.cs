@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CloudAPIsSemesterProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudAPIsSemesterProject
 {
@@ -20,6 +22,12 @@ namespace CloudAPIsSemesterProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<LibraryContext>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")
+                )
+            );
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -30,7 +38,7 @@ namespace CloudAPIsSemesterProject
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, LibraryContext context)
         {
             if (env.IsDevelopment())
             {
@@ -66,6 +74,8 @@ namespace CloudAPIsSemesterProject
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            DBInitializer.Initialize(context);
         }
     }
 }

@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: "Microsoft SQL Server CloudAPI's"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=<SOMEPASSWORD>
+    ports:
+      - 1433:1433
