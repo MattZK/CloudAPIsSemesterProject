@@ -1,5 +1,10 @@
-FROM microsoft/dotnet:sdk AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-bionic AS build-env
 WORKDIR /app
+
+# Install NodeJS for Angular
+RUN apt-get update -y
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sh -
+RUN apt-get install -y nodejs
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
