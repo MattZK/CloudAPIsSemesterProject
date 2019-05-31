@@ -10,6 +10,8 @@ RUN apt-get install -y nodejs
 COPY *.csproj ./
 RUN dotnet restore
 
+#ENV ASPNETCORE_Environment=Development
+
 # Copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -o out
@@ -17,5 +19,8 @@ RUN dotnet publish -c Release -o out
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
+RUN apt-get update -y
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sh -
+RUN apt-get install -y nodejs
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "CloudAPIsSemesterProject.dll"]

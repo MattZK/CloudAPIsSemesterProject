@@ -12,7 +12,7 @@ export class ExploreComponent implements OnInit {
   @ViewChild('query') exploreQuery;
   @ViewChild("locationBtn") locationButton;
 
-  private venueList: FourSquareExploreResponse.Venue[];
+  public venueList: FourSquareExploreResponse.Venue[];
 
   constructor(private dataService: DataService) { }
 

@@ -10,7 +10,7 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./venue-detail.component.sass']
 })
 export class VenueDetailComponent implements OnInit {
-  private venue: FourSquareVenueResponse.Venue;
+  public venue: FourSquareVenueResponse.Venue;
 
   constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 

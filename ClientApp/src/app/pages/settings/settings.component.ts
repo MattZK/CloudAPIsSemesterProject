@@ -10,10 +10,13 @@ export class SettingsComponent implements OnInit {
   @ViewChild('fsqclientid') FSQClientIDField;
   @ViewChild('fsqclientsecret') FSQClientSecretField;
 
-  private APICredentialsStatus: Boolean
+  private _APICredentialsStatus: Boolean
+  get APICredentialsStatus () {
+    return this._APICredentialsStatus;
+  }
 
   constructor(private dataService: DataService) {
-    this.APICredentialsStatus = this.dataService.APICredentialsStatus();
+    this._APICredentialsStatus = this.dataService.APICredentialsStatus();
   }
 
   ngOnInit() {
@@ -23,7 +26,7 @@ export class SettingsComponent implements OnInit {
 
   save() {
     this.dataService.setAPICredentials(this.FSQClientIDField.nativeElement.value, this.FSQClientSecretField.nativeElement.value);
-    this.APICredentialsStatus = this.dataService.APICredentialsStatus();
+    this._APICredentialsStatus = this.dataService.APICredentialsStatus();
   }
 
 }

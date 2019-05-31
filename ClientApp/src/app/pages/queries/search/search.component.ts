@@ -11,7 +11,7 @@ import { FourSquareSearchResponse } from 'src/app/types';
 export class SearchComponent implements OnInit {
   @ViewChild('query') searchQuery;
 
-  private venueList: FourSquareSearchResponse.Venue[];
+  public venueList: FourSquareSearchResponse.Venue[];
 
   constructor(private dataService: DataService) { }
 

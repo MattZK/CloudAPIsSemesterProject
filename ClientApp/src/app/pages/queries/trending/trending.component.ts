@@ -12,7 +12,7 @@ export class TrendingComponent implements OnInit {
   @ViewChild("locationBtn") locationButton;
   @ViewChild("query") queryField;
 
-  private venueList: FourSquareTrendingResponse.Venue[];
+  public venueList: FourSquareTrendingResponse.Venue[];
 
   constructor(private dataService: DataService) { }
 
