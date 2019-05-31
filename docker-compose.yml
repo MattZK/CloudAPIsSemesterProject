@@ -3,9 +3,25 @@ version: '3.7'
 services:
   database:
     image: mcr.microsoft.com/mssql/server:2017-latest
-    container_name: "Microsoft SQL Server CloudAPI's"
+    container_name: "CloudAPIsMSSQL"
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=<SOMEPASSWORD>
+      - SA_PASSWORD=SigmaIsAPasswordNow2
     ports:
       - 1433:1433
+  web:
+    build: .
+    container_name: "CloudAPIsWeb"
+    networks:
+      - traefik_proxy
+    labels:
+      - "traefik.backend=CloudAPIsWeb"
+      - "traefik.frontend.rule=Host:cloudapis.matthiaswillemsen.me, cloudapis.mira.systems"
+      - "traefik.docker.network=management_proxy-bridge"
+      - "traefik.port=80"
+
+networks:
+  internal:
+  traefik_proxy:
+    external:
+      name: management_proxy-bridge

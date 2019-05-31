@@ -24,7 +24,7 @@ namespace CloudAPIsSemesterProject
         {
             services.AddDbContext<LibraryContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")
+                    Configuration.GetConnectionString("ExternalConnection")
                 )
             );
 
