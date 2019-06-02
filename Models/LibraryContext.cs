@@ -7,11 +7,10 @@ using CloudAPIsSemesterProject;
 
 namespace CloudAPIsSemesterProject.Models
 {
-  public class LibraryContext: DbContext
+  public class LibraryContext : DbContext
   {
-      public LibraryContext(DbContextOptions<LibraryContext> options): base(options){}
-      public DbSet<User> Users { get; set; }
-      public DbSet<PlaceList> PlaceList { get; set; }
-      public DbSet<Place> Places { get; set; }
+    public LibraryContext(DbContextOptions<LibraryContext> options) : base(options) { }
+    public DbSet<Place> Places { get; set; }
+    public DbSet<FavoritesList> FavoritesList { get; set; }
   }
 }
