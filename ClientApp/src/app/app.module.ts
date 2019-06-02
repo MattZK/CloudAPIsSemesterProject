@@ -16,7 +16,6 @@ import { FormsModule }   from '@angular/forms';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthService } from './auth.service';
 import { AuthGaurd } from './guards/auth.guard';
-import { UnAuthGaurd } from './guards/unauth.guard';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,7 @@ import { UnAuthGaurd } from './guards/unauth.guard';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGaurd, UnAuthGaurd],
+  providers: [AuthService, AuthGaurd],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

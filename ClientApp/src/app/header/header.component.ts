@@ -13,10 +13,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   logout() {
     this.auth.removeJWTCredentials();
     this.router.navigate(['auth']);
   }
-
 }
