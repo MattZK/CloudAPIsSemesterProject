@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-import { DevDataService } from 'src/app/dev-data.service';
 import { FourSquareSearchResponse } from 'src/app/types';
 
 @Component({
