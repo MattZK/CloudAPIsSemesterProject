@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DevDataService } from 'src/app/dev-data.service';
 import { FourSquareVenueResponse } from 'src/app/types';
 import { DataService } from 'src/app/data.service';
 

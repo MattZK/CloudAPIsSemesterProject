@@ -1,0 +1,19 @@
+:host {
+  text-align: center;
+}
+.button {
+  margin-top: 2em;
+  background: #FF485F;
+  // background: linear-gradient(90deg, #FF8A90, #FF485F);
+  color: white;
+  padding: .5em 2.5em;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  img {
+    height: 1.5em;
+    vertical-align: middle;
+    margin-right: .5em;
+  }
+}

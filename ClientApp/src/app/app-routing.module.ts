@@ -8,14 +8,17 @@ import { SearchComponent } from './pages/queries/search/search.component';
 import { ExploreComponent } from './pages/queries/explore/explore.component';
 import { TrendingComponent } from './pages/queries/trending/trending.component';
 import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { AuthGaurd } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'settings', component: SettingsComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'explore', component: ExploreComponent },
-  { path: 'trending', component: TrendingComponent },
-  { path: 'venue/:id', component: VenueDetailComponent },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGaurd] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGaurd] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGaurd] },
+  { path: 'explore', component: ExploreComponent, canActivate: [AuthGaurd] },
+  { path: 'trending', component: TrendingComponent, canActivate: [AuthGaurd] },
+  { path: 'venue/:id', component: VenueDetailComponent, canActivate: [AuthGaurd] },
+  { path: 'auth', component: AuthComponent },
   { path: '**', redirectTo: '/home' }
 ];
 
