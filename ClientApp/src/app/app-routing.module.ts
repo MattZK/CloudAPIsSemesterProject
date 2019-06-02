@@ -11,6 +11,7 @@ import { VenueDetailComponent } from './results/venue-detail/venue-detail.compon
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGaurd } from './guards/auth.guard';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { FavoritesDetailComponent } from './pages/favorites/favorites-detail/favorites-detail.component';
 
 const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGaurd] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'explore', component: ExploreComponent, canActivate: [AuthGaurd] },
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGaurd] },
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGaurd] },
+  { path: 'favorites/:id', component: FavoritesDetailComponent, canActivate: [AuthGaurd] },
   { path: 'venue/:id', component: VenueDetailComponent, canActivate: [AuthGaurd] },
   { path: 'auth', component: AuthComponent },
   { path: '**', redirectTo: '/home' }

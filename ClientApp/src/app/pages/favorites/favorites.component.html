@@ -1,3 +1,12 @@
-<p>
-  favorites works!
-</p>
+<div class="ui card" *ngFor="let favorite of favorites">
+  <div class="content">
+    <div class="header">{{ favorite.name }}</div>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">{{ favorite.description }}</h4>
+  </div>
+  <div class="extra content">
+    <button class="ui button">Edit</button>
+    <button class="ui primary button" [routerLink]="[ '/favorites', favorite.id ]">View</button>
+  </div>
+</div>

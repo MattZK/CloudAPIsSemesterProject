@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse } from 'src/app/types';
+import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse, Collection } from 'src/app/types';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DataService {
   public API_CLIENT: string;
   public API_SECRET: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
     this.getAPICredentials();
   }
 
@@ -88,5 +89,15 @@ export class DataService {
     .set('client_secret', this.API_SECRET)
     .set('v', '20190522');
     return this.http.get<FourSquareTrendingResponse.RootObject>(`https://api.foursquare.com/v2/venues/trending`, { params: params });
+  }
+
+  public getFavorites() {
+    const params = new HttpParams().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.get<Collection[]>('/api/collections', { params: params });
+  }
+
+  public getFavoritesDetail(id: number) {
+    const params = new HttpParams().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.get<Collection>(`/api/collections/${id}`, { params: params });
   }
 }
