@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CloudAPIsSemesterProject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudAPIsSemesterProject.Controllers
 {
@@ -17,10 +18,25 @@ namespace CloudAPIsSemesterProject.Controllers
       _context = ctx;
     }
 
+    [Authorize]
     [HttpGet]
-    public ActionResult<List<PlaceList>> GetLists()
+    public ActionResult<List<PlaceList>> GetLists(int? page, string sort, int length = 5, string dir = "asc")
     {
-      return Ok(_context.PlaceList.ToList());
+      IQueryable<PlaceList> query = _context.PlaceList;
+
+      if (!string.IsNullOrWhiteSpace(sort) && sort == "id")
+      {
+        if (dir == "desc")
+          query = query.OrderByDescending(d => d.Id);
+        else
+          query = query.OrderBy(d => d.Id);
+      }
+
+      if (page.HasValue)
+        query = query.Skip(page.Value * length);
+      query = query.Take(length);
+
+      return Ok(query.ToList());
     }
 
     [Route("{id}")]

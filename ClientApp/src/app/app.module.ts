@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VenueListComponent } from './results/venue-list/venue-list.component';
 import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
 import { FormsModule }   from '@angular/forms';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule }   from '@angular/forms';
     ExploreComponent,
     TrendingComponent,
     VenueListComponent,
-    VenueDetailComponent
+    VenueDetailComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
