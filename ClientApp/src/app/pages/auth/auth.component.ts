@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -9,19 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) { }
-  
-  public logedIn;
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (this.route.snapshot.queryParams['code']) {
-      this.logedIn = true;
-      this.authService.getApiToken(this.route.snapshot.queryParams);
+    if (this.route.snapshot.fragment) {
+      this.authService.setJWTCredentials(this.route.snapshot.fragment.split('&')[0].split('=')[1])
+      this.router.navigate(['/home']);
     }
   }
 
   login() {
-    console.log(this.authService.getMSAuthTokenURL());
-    // window.location.href = this.authService.getMSAuthTokenURL();
+    this.authService.getMSWebToken();
   }
 }
