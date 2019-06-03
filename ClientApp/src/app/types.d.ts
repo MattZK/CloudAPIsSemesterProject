@@ -1,16 +1,16 @@
 
 export interface Place {
-  id: number,
+  id?: number,
   name: string,
   location: string,
   fsqid: string
 }
 
 export interface Collection {
-  id: number,
+  id?: number,
   name: string,
-  desciption: string,
-  places: Place[]
+  description: string,
+  places?: Place[]
 }
 
 export declare namespace FourSquareSearchResponse {

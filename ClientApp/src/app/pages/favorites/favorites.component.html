@@ -1,12 +1,17 @@
-<div class="ui card" *ngFor="let favorite of favorites">
-  <div class="content">
-    <div class="header">{{ favorite.name }}</div>
-  </div>
-  <div class="content">
-    <h4 class="ui sub header">{{ favorite.description }}</h4>
-  </div>
-  <div class="extra content">
-    <button class="ui button">Edit</button>
-    <button class="ui primary button" [routerLink]="[ '/favorites', favorite.id ]">View</button>
+<div class="ui ten wide left aligned column" style="margin-top: 2em;">
+  <h2>Favorites</h2>
+  <button class="ui button" [routerLink]="[ '/favorites', 'edit' ]">Add</button>
+  <div class="ui card" *ngFor="let favorite of favorites">
+    <div class="content">
+      <div class="header">{{ favorite.name }}</div>
+    </div>
+    <div class="content">
+      <h4 class="ui sub header">{{ favorite.description }}</h4>
+    </div>
+    <div class="extra content">
+      <button class="ui button" [routerLink]="[ '/favorites', 'edit', favorite.id ]">Edit</button>
+      <button class="ui primary button" [routerLink]="[ '/favorites', favorite.id ]">View</button>
+      <button class="ui red button" (click)="delete(favorite.id)">Delete</button>
+    </div>
   </div>
 </div>

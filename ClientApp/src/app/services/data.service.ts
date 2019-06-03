@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse, Collection } from 'src/app/types';
 import { AuthService } from './auth.service';
 
@@ -92,12 +92,27 @@ export class DataService {
   }
 
   public getFavorites() {
-    const params = new HttpParams().set('Authorization', `Bearer ${this.auth.getToken()}`);
-    return this.http.get<Collection[]>('/api/collections', { params: params });
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.get<Collection[]>('/api/collections', { headers: headers });
   }
 
   public getFavoritesDetail(id: number) {
-    const params = new HttpParams().set('Authorization', `Bearer ${this.auth.getToken()}`);
-    return this.http.get<Collection>(`/api/collections/${id}`, { params: params });
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.get<Collection>(`/api/collections/${id}`, { headers: headers });
+  }
+
+  public putFavorites(favoriteList: Collection) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.put(`/api/collections`, favoriteList, { headers: headers });
+  }
+
+  public postFavorites(favoriteList: Collection) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.post(`/api/collections`, favoriteList, { headers: headers });
+  }
+
+  public deleteFavorites(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.delete(`/api/collections/${id}`, { headers: headers });
   }
 }

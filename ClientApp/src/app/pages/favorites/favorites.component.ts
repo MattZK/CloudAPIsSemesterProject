@@ -9,14 +9,18 @@ import { Collection } from 'src/app/types';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private data: DataService) { }
 
   public favorites: Collection[];
 
   ngOnInit() {
-    this.dataService.getFavorites().subscribe(favorites => {
+    this.data.getFavorites().subscribe(favorites => {
       this.favorites = favorites;
     });
+  }
+
+  delete(id: number) {
+    this.data.deleteFavorites(id).subscribe(data => {});
   }
 
 }
