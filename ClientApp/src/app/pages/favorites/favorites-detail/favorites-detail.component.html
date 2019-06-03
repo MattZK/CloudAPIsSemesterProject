@@ -15,11 +15,12 @@
     <h3>Venues</h3>
     <div class="ui relaxed list" style="text-align: left;">
       <div class="item" *ngFor="let venue of favoritesList.places">
-        <img class="ui avatar image" style="background: gray;">
+        <img class="ui avatar image" [src]="venue.icon" style="background: gray;">
         <div class="content">
           <a class="header">{{ venue.name }}</a>
           <div class="description">{{ venue.location }}</div>
         </div>
+        <div class="right floated ui red icon button" (click)="delete(venue.id)"><i class="trash icon"></i></div>
         <div class="right floated ui button" [routerLink]="[ '/venue', venue.fsqid ]">Details</div>
       </div>
     </div>

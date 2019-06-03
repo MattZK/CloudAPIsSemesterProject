@@ -19,6 +19,7 @@ import { AuthGaurd } from './guards/auth.guard';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { FavoritesDetailComponent } from './pages/favorites/favorites-detail/favorites-detail.component';
 import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorites-edit.component';
+import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-add-favorites.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorit
     AuthComponent,
     FavoritesComponent,
     FavoritesDetailComponent,
-    FavoritesEditComponent
+    FavoritesEditComponent,
+    VenueAddFavoritesComponent
   ],
   imports: [
     BrowserModule,

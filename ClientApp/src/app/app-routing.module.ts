@@ -13,6 +13,7 @@ import { AuthGaurd } from './guards/auth.guard';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { FavoritesDetailComponent } from './pages/favorites/favorites-detail/favorites-detail.component';
 import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorites-edit.component';
+import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-add-favorites.component';
 
 const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGaurd] },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'favorites/edit/:id', component: FavoritesEditComponent, canActivate: [AuthGaurd] },
   { path: 'favorites/:id', component: FavoritesDetailComponent, canActivate: [AuthGaurd] },
   { path: 'venue/:id', component: VenueDetailComponent, canActivate: [AuthGaurd] },
+  { path: 'venue/:id/save', component: VenueAddFavoritesComponent, canActivate: [AuthGaurd] },
   { path: 'auth', component: AuthComponent },
   { path: '**', redirectTo: '/home' }
 ];

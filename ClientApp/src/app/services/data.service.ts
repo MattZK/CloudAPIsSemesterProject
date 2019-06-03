@@ -121,4 +121,9 @@ export class DataService {
     return this.http.post(`/api/places/${ parent }`, place, { headers: headers });
   }
 
+  public deletePlace(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.delete(`/api/places/${id}`, { headers: headers });
+  }
+
 }

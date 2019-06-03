@@ -23,13 +23,4 @@ export class VenueDetailComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
-
-  addToList() {
-    this.data.postPlace(1, {
-      name: this.venue.name,
-      location: this.venue.location.city,
-      fsqid: this.venue.id,
-      icon: this.venue.bestPhoto.prefix + '300' + this.venue.bestPhoto.suffix
-    }).subscribe(data => {});
-  }
 }

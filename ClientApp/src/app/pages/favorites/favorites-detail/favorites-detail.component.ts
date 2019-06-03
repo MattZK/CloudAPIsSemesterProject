@@ -24,4 +24,11 @@ export class FavoritesDetailComponent implements OnInit {
     }
   }
 
+  delete(id) {
+    this.data.deletePlace(id).subscribe(data => {
+      this.data.getFavoritesDetail(this.route.snapshot.params.id).subscribe(favoritelist => {
+        this.favoritesList = favoritelist;
+      });
+    });
+  }
 }

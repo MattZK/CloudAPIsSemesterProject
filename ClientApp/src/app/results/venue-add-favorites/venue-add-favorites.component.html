@@ -1,0 +1,24 @@
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="list icon"></i>
+      <div class="content">
+        Lists
+      </div>
+    </h2>
+  </div>
+</div>
+
+<div class="ui ten wide left aligned column" style="margin-top: 2em;">
+  <div *ngIf="favorites" class="ui relaxed list" style="text-align: left;">
+    <div class="item" *ngFor="let favorite of favorites">
+      <img class="ui avatar image" style="background: gray;">
+      <div class="content">
+        <a class="header">{{ favorite.name }}</a>
+        <div class="description">{{ favorite.description }}</div>
+      </div>
+      <div class="right floated ui button" (click)="addToList(favorite.id)">Add to this list</div>
+    </div>
+  </div>
+</div>
