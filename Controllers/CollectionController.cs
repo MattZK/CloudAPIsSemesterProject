@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudAPIsSemesterProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudAPIsSemesterProject.Controllers
 {
@@ -46,7 +47,7 @@ namespace CloudAPIsSemesterProject.Controllers
     /**
      * Add a favorites list
      */
-    [HttpPost]
+    [HttpPost, Authorize]
     public ActionResult<FavoritesList> AddList([FromBody] FavoritesList favoritesList)
     {
       _context.FavoritesList.Add(favoritesList);
@@ -58,7 +59,7 @@ namespace CloudAPIsSemesterProject.Controllers
      * Delete a favorites list by Id
      */
     [Route("{id}")]
-    [HttpDelete]
+    [HttpDelete, Authorize]
     public ActionResult DeleteList(int id)
     {
       FavoritesList favoritesList = _context.FavoritesList.Find(id);
@@ -72,7 +73,7 @@ namespace CloudAPIsSemesterProject.Controllers
     /**
      * Update a favorites list
      */
-    [HttpPut]
+    [HttpPut, Authorize]
     public ActionResult<FavoritesList> UpdateList([FromBody] FavoritesList favoritesList)
     {
       _context.FavoritesList.Update(favoritesList);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudAPIsSemesterProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudAPIsSemesterProject.Controllers
 {
@@ -47,7 +48,7 @@ namespace CloudAPIsSemesterProject.Controllers
      * Add a place
      */
     [Route("{id}")]
-    [HttpPost]
+    [HttpPost, Authorize]
     public ActionResult<Place> AddPlace(int id, [FromBody] Place place)
     {
       place.FavoritesListId = id;
@@ -60,7 +61,7 @@ namespace CloudAPIsSemesterProject.Controllers
      * Delete a place by Id
      */
     [Route("{id}")]
-    [HttpDelete]
+    [HttpDelete, Authorize]
     public ActionResult DeletePlace(int id)
     {
       Place place = _context.Places.Find(id);
