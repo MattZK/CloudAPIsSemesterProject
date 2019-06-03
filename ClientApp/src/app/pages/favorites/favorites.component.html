@@ -1,0 +1,40 @@
+<div class="ui centered grid">
+
+  <div class="ui row">
+    <h2 class="ui icon header">
+      <i class="star icon"></i>
+      <div class="content">
+        Lists
+      </div>
+    </h2>
+  </div>
+
+  <div class="ui cards">
+    <div class="ui card" *ngFor="let favorite of favorites">
+      <div class="content">
+        <div class="header">{{ favorite.name }}</div>
+      </div>
+      <div class="content">
+        <h4 class="ui sub header">{{ favorite.description }}</h4>
+      </div>
+      <div class="extra content">
+        <span class="left floated like" [routerLink]="[ '/favorites', 'edit', favorite.id ]">
+          <i class="edit icon"></i>
+          Edit
+        </span>
+        <span class="right floated star" (click)="delete(favorite.id)">
+          <i class="trash icon"></i>
+          Delete
+        </span>
+      </div>
+      <div class="ui bottom attached button" [routerLink]="[ '/favorites', favorite.id ]">
+        <i class="eye icon"></i>
+        View
+      </div>
+    </div>
+  </div>
+
+  <div class="ui row">
+    <div class="ui button" [routerLink]="[ '/favorites', 'edit' ]"><i class="plus icon"></i> New List</div>
+  </div>
+</div>

@@ -14,8 +14,12 @@ import { VenueListComponent } from './results/venue-list/venue-list.component';
 import { VenueDetailComponent } from './results/venue-detail/venue-detail.component';
 import { FormsModule }   from '@angular/forms';
 import { AuthComponent } from './pages/auth/auth.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGaurd } from './guards/auth.guard';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { FavoritesDetailComponent } from './pages/favorites/favorites-detail/favorites-detail.component';
+import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorites-edit.component';
+import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-add-favorites.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { AuthGaurd } from './guards/auth.guard';
     TrendingComponent,
     VenueListComponent,
     VenueDetailComponent,
-    AuthComponent
+    AuthComponent,
+    FavoritesComponent,
+    FavoritesDetailComponent,
+    FavoritesEditComponent,
+    VenueAddFavoritesComponent
   ],
   imports: [
     BrowserModule,

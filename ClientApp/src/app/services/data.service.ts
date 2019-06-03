@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse } from './types';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { FourSquareVenueResponse, FourSquareExploreResponse, FourSquareSearchResponse, FourSquareTrendingResponse, Collection, Place } from 'src/app/types';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DataService {
   public API_CLIENT: string;
   public API_SECRET: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
     this.getAPICredentials();
   }
 
@@ -89,4 +90,40 @@ export class DataService {
     .set('v', '20190522');
     return this.http.get<FourSquareTrendingResponse.RootObject>(`https://api.foursquare.com/v2/venues/trending`, { params: params });
   }
+
+  public getFavorites() {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.get<Collection[]>('/api/collections', { headers: headers });
+  }
+
+  public getFavoritesDetail(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.get<Collection>(`/api/collections/${id}`, { headers: headers });
+  }
+
+  public putFavorites(favoriteList: Collection) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.put(`/api/collections`, favoriteList, { headers: headers });
+  }
+
+  public postFavorites(favoriteList: Collection) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.post(`/api/collections`, favoriteList, { headers: headers });
+  }
+
+  public deleteFavorites(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.delete(`/api/collections/${id}`, { headers: headers });
+  }
+
+  public postPlace(parent: number, place: Place) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.post(`/api/places/${ parent }`, place, { headers: headers });
+  }
+
+  public deletePlace(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.auth.getToken() }`);
+    return this.http.delete(`/api/places/${id}`, { headers: headers });
+  }
+
 }
