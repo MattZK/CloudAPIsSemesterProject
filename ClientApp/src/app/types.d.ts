@@ -3,7 +3,8 @@ export interface Place {
   id?: number,
   name: string,
   location: string,
-  fsqid: string
+  fsqid: string,
+  icon: string
 }
 
 export interface Collection {

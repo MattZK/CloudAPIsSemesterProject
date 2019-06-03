@@ -1,4 +1,29 @@
-<h3>{{ favoritesList.name }}</h3>
-<h5>{{ favoritesList.description }}</h5>
+<div *ngIf="favoritesList">
+  <div class="ui centered grid">
+    <div class="ui row">
+      <h2 class="ui icon header">
+        <i class="list icon"></i>
+        <div class="content">
+          {{ favoritesList.name }}
+          <div class="sub header">{{ favoritesList.description }}</div>
+        </div>
+      </h2>
+    </div>
+  </div>
 
-<div *ngFor="let item of favoritesList.places">{{item.name}}</div>
+  <div class="ui ten wide left aligned column" style="margin-top: 2em;">
+    <h3>Venues</h3>
+    <div class="ui relaxed list" style="text-align: left;">
+      <div class="item" *ngFor="let venue of favoritesList.places">
+        <img class="ui avatar image" style="background: gray;">
+        <div class="content">
+          <a class="header">{{ venue.name }}</a>
+          <div class="description">{{ venue.location }}</div>
+        </div>
+        <div class="right floated ui button" [routerLink]="[ '/venue', venue.fsqid ]">Details</div>
+      </div>
+    </div>
+
+    <p *ngIf="favoritesList.places.length === 0">No results</p>
+  </div>
+</div>
