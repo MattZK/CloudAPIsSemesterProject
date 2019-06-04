@@ -32,6 +32,20 @@ namespace CloudAPIsSemesterProject.Controllers
     }
 
     /**
+     * Find a place
+     */
+    [Route("name")]
+    [HttpGet]
+    public ActionResult<List<Place>> GetAPlaces(string query)
+    {
+      IQueryable<Place> _query = _context.Places;
+
+      _query = _query.Where(x => x.Name == query);
+
+      return Ok(query.ToList());
+    }
+
+    /**
      * Get a place by Id
      */
     [Route("{id}")]
