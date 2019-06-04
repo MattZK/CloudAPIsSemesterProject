@@ -16,18 +16,23 @@ import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorit
 import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-add-favorites.component';
 
 const routes: Routes = [
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGaurd] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGaurd] },
-  { path: 'search', component: SearchComponent, canActivate: [AuthGaurd] },
-  { path: 'explore', component: ExploreComponent, canActivate: [AuthGaurd] },
-  { path: 'trending', component: TrendingComponent, canActivate: [AuthGaurd] },
+  // Main Pages
+  { path: 'home', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'explore', component: ExploreComponent },
+  { path: 'trending', component: TrendingComponent },
+  { path: 'settings', component: SettingsComponent },
+  // Favorites
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGaurd] },
   { path: 'favorites/edit', component: FavoritesEditComponent, canActivate: [AuthGaurd] },
   { path: 'favorites/edit/:id', component: FavoritesEditComponent, canActivate: [AuthGaurd] },
   { path: 'favorites/:id', component: FavoritesDetailComponent, canActivate: [AuthGaurd] },
-  { path: 'venue/:id', component: VenueDetailComponent, canActivate: [AuthGaurd] },
+  // Venue Related
+  { path: 'venue/:id', component: VenueDetailComponent },
   { path: 'venue/:id/save', component: VenueAddFavoritesComponent, canActivate: [AuthGaurd] },
+  // Authentication
   { path: 'auth', component: AuthComponent },
+  // Not Found Redirect
   { path: '**', redirectTo: '/home' }
 ];
 
