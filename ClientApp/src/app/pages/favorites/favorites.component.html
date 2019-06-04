@@ -18,11 +18,11 @@
         <h4 class="ui sub header">{{ favorite.description }}</h4>
       </div>
       <div class="extra content">
-        <span class="left floated like" [routerLink]="[ '/favorites', 'edit', favorite.id ]">
+        <span class="left floated edit clickable" [routerLink]="[ '/favorites', 'edit', favorite.id ]">
           <i class="edit icon"></i>
           Edit
         </span>
-        <span class="right floated star" (click)="delete(favorite.id)">
+        <span class="right floated trash clickable" (click)="delete(favorite.id)">
           <i class="trash icon"></i>
           Delete
         </span>

@@ -1,5 +1,9 @@
 <div class="ui centered grid">
 
+  <div class="ui grid row">
+    <app-api-check></app-api-check>
+  </div>
+
   <div class="ui row">
     <h2 class="ui icon header">
       <i class="search icon"></i>
@@ -18,6 +22,6 @@
       <button class="ui button" type="submit">Search</button>
     </form>
   </div>
-  
+
   <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
 </div>

@@ -1,4 +1,4 @@
-.right.menu .item::after {
+.right.menu .item:last-child::after {
   position: absolute;
   content: "";
   top: 0;
