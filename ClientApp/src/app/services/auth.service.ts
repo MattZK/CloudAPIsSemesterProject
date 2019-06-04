@@ -15,7 +15,6 @@ export class AuthService {
 
   /**
    * Check if JWT is set. Does not check validity of the token nor if it has expired
-   * 
    * @returns  {boolean} JWT Set
    */
   public getJWTCredentialsStatus() {
@@ -26,7 +25,6 @@ export class AuthService {
 
   /**
    * Set and save a JWT after retrieval
-   * 
    * @param {string} token The JWT extracted from the MS Redirect
    * @returns {boolean} JWT Set
    */
@@ -41,7 +39,6 @@ export class AuthService {
 
   /**
    * Get the JWT stored in LocalStorage and store it as a local variable
-   * 
    * @returns {void}
    */
   private getJWTCredentials() {
@@ -51,7 +48,6 @@ export class AuthService {
 
   /**
    * Get the JWT stored as a local variable
-   * 
    * @returns {JWT|string} The JWT
    */
   public getToken() {
@@ -60,7 +56,6 @@ export class AuthService {
 
   /**
    * Remove the JWT stored in LocalStorage and local variable
-   * 
    * @returns {void}
    */
   public removeJWTCredentials() {
@@ -70,7 +65,6 @@ export class AuthService {
 
   /**
    * Redirect to the Microsoft Oauth2 Authorize endpoint
-   * 
    * @returns {void}
    */
   getMSWebToken() {
