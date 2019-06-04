@@ -20,6 +20,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { FavoritesDetailComponent } from './pages/favorites/favorites-detail/favorites-detail.component';
 import { FavoritesEditComponent } from './pages/favorites/favorites-edit/favorites-edit.component';
 import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-add-favorites.component';
+import { ApiCheckComponent } from './pages/settings/api-check.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { VenueAddFavoritesComponent } from './results/venue-add-favorites/venue-
     FavoritesComponent,
     FavoritesDetailComponent,
     FavoritesEditComponent,
-    VenueAddFavoritesComponent
+    VenueAddFavoritesComponent,
+    ApiCheckComponent
   ],
   imports: [
     BrowserModule,

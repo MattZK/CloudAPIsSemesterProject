@@ -1,5 +1,9 @@
 <div class="ui centered grid">
 
+  <div class="ui grid row">
+    <app-api-check></app-api-check>
+  </div>
+
   <div class="ui row">
     <h2 class="ui icon header">
       <i class="search icon"></i>
@@ -16,10 +20,11 @@
         <input type="text" placeholder="Location" #query>
       </div>
       <button class="ui button" type="button" (click)="searchVenueByUserInput()">Search</button>
-      <button class="ui primary button disabled" type="button" (click)="searchVenueByUserLocation()" #locationBtn>Use Current Location</button>
+      <button class="ui primary button disabled" type="button" (click)="searchVenueByUserLocation()" #locationBtn>Use
+        Current Location</button>
     </form>
   </div>
 
   <app-venue-list class="ui row" *ngIf="venueList" [venues]="venueList"></app-venue-list>
-  
+
 </div>
